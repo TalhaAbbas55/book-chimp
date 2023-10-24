@@ -26,9 +26,7 @@ function EpubPaginationViewer() {
         },
         // Add more books as needed
     ]);
-    useEffect(() => {
-        setCurrentBook('Alice')
-    }, [])
+
     // Load the EPUB file
     useEffect(() => {
 
@@ -263,8 +261,13 @@ function EpubPaginationViewer() {
 
     useEffect(() => {
         if (renditions) {
-            // Apply a class to selected text for highlighting
+            // Apply a class to selected text for highlighting on click
             renditions.on("selected", (cfiRange) => {
+                renditions.annotations.highlight(cfiRange, {}, (e) => { });
+            });
+
+            // Apply a class to selected text for highlighting on touch (iOS)
+            renditions.on("touchstart", (cfiRange) => {
                 renditions.annotations.highlight(cfiRange, {}, (e) => { });
             });
 
@@ -281,6 +284,7 @@ function EpubPaginationViewer() {
             });
         }
     }, [renditions]);
+
 
     const handleChapterNavigation = (chapter) => {
         for (let i = 0; i < chapterIndexes.length; i++) {
