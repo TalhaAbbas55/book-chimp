@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useEffect, useState } from "react";
 import ePub from "epubjs";
 import "./style.css";
@@ -5,7 +7,7 @@ function EpubPaginationViewer() {
     const [pageIndex, setPageIndex] = useState(0);
     const [searchResults, setSearchResults] = useState([]);
     const [book, setBook] = useState(null);
-    const [currentBook, setCurrentBook] = useState("Sway");
+    const [currentBook, setCurrentBook] = useState("Alice");
     const [searchContent, setSearchContent] = useState("");
     const [renditions, setRenditions] = useState(null);
     const [highLightSearchedWords, setHighLightSearchedWords] = useState(false);
@@ -24,6 +26,9 @@ function EpubPaginationViewer() {
         },
         // Add more books as needed
     ]);
+    useEffect(() => {
+        setCurrentBook('Alice')
+    }, [])
     // Load the EPUB file
     useEffect(() => {
 
@@ -61,7 +66,7 @@ function EpubPaginationViewer() {
         setRenditions(rendition);
 
         // Display the initial page
-        var displayed = rendition.display(pageIndex);
+        rendition.display(pageIndex);
 
         if (highLightSearchedWords && searchContent) {
             setTimeout(() => {
@@ -79,7 +84,7 @@ function EpubPaginationViewer() {
         return () => {
             book1.destroy();
         };
-    }, [pageIndex]);
+    }, [pageIndex, highLightSearchedWords, searchContent, currentBookUrl]);
 
     function extractChapterNames(toc, bookState, parentTitle = "") {
         let allChapters = [];
@@ -127,7 +132,7 @@ function EpubPaginationViewer() {
             const searchRegex = new RegExp(searchText, "gi");
             const foundLocations = [];
 
-            searchResults.map((result, index) => {
+            searchResults.forEach((result, index) => {
                 renditions.annotations.remove(result.cfi, "underline");
                 renditions.annotations.remove(result.cfi, "highlight");
             });
@@ -187,7 +192,7 @@ function EpubPaginationViewer() {
         renditionState
     ) => {
         if (searchText && bookState.spine.spineItems[pageNumber]) {
-            const searchRegex = new RegExp(searchText, "gi");
+
 
             // Iterate over spine items (sections) to search for text
 
@@ -205,7 +210,7 @@ function EpubPaginationViewer() {
             if (searchResultsInSection.length > 0) {
                 // Modify the search results to replace search text with a <span>
 
-                const modifiedResults = searchResultsInSection.map((result) => {
+                searchResultsInSection.forEach((result) => {
                     // renditions.annotations.underline(result.cfi, {}, (e) => { // change color here
 
                     // }, 'newTextFound',);

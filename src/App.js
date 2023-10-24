@@ -1,4 +1,3 @@
-import Test from "./test.jsx"
 import './App.css';
 import Test2 from "./test1.jsx";
 
