@@ -16,11 +16,11 @@ function EpubPaginationViewer() {
     const [books, setBooks] = useState([
         {
             title: "Alice",
-            url: "http://localhost:3001/alice.epub",
+            url: "https://react-reader.metabits.no/files/alice.epub",
         },
         {
             title: "Sway",
-            url: "http://localhost:3001/Sway.epub",
+            url: "https://react-reader.metabits.no/files/alice.epub",
         },
         // Add more books as needed
     ]);
