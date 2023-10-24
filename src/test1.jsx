@@ -11,7 +11,7 @@ function EpubPaginationViewer() {
     const [highLightSearchedWords, setHighLightSearchedWords] = useState(false);
     const [chaptersName, setChaptersName] = useState([]);
     const [chapterIndexes, setChapterIndexes] = useState([]);
-    const [currentBookUrl, setCurrentBookUrl] = useState("http://localhost:3001/Sway.epub")
+    const [currentBookUrl, setCurrentBookUrl] = useState("https://react-reader.metabits.no/files/alice.epub")
     const [singleBookSearchResults, setSingleBookSearchResults] = useState([]);
     const [books, setBooks] = useState([
         {
