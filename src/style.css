@@ -1,0 +1,43 @@
+.desc:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.textFound {
+    color: green;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.text {
+    background-color: black;
+}
+
+.newText {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.newTextFound rect {
+    stroke: red;
+    stroke-width: 4;
+}
+
+.epub-container::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+}
+
+.epub-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Set the track (background) color of the scrollbar */
+    border-radius: 6px;
+}
+
+.epub-container::-webkit-scrollbar-thumb {
+    background: #dd07c1; /* Set the color of the scrollbar thumb (the draggable part) */
+    border-radius: 6px; /* Add rounded corners to the scrollbar thumb */
+}
+
+.epub-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Change the thumb color on hover */
+}
